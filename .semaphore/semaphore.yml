@@ -9,7 +9,7 @@ blocks:
     task:
       jobs:
         - name: Build
-          parallelism: 20
+          parallelism: 10
           commands:
             - checkout
             - bash .semaphore/setup.sh
