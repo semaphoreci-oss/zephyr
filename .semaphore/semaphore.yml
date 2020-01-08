@@ -33,7 +33,7 @@ blocks:
             - cache list
             - echo cache store zephyr-sdk-0.10.3 /opt/sdk/zephyr-sdk-0.10.3
             - cache list
-            - checkout
+            - checkout --use-cache
             - west init -l .
             - ls
             - pwd
