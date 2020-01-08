@@ -13,6 +13,15 @@ blocks:
           parallelism: 2
           commands:
             - sem-version python 3.7
+
+            - export PATH=$HOME/.local/bin:$PATH
+            - mkdir .pip_cache
+            - cache restore
+            - pip3 install --cache-dir .pip_cache -U west
+            - wget https://raw.githubusercontent.com/zephyrproject-rtos/zephyr/master/scripts/requirements.txt
+            - pip3 install --cache-dir .pip_cache -r requirements.txt
+            - cache store
+
             - sudo mkdir /opt/sdk
             - sudo chown $USER /opt/sdk
             - df -h
@@ -24,15 +33,6 @@ blocks:
             - install-package git cmake ninja-build gperf
               ccache dfu-util device-tree-compiler wget python3-pip python3-setuptools
               python3-wheel xz-utils file make gcc gcc-multilib
-
-            # Add --local pip bin to $PATH
-            - export PATH=$HOME/.local/bin:$PATH
-            - mkdir .pip_cache
-            - cache restore
-            # Use --user to avoid permission conflicts
-            - pip3 install --cache-dir .pip_cache -U west
-            - pip3 install --cache-dir .pip_cache -r https://raw.githubusercontent.com/zephyrproject-rtos/zephyr/master/scripts/requirements.txt
-            - cache store
             - ls /opt/sdk/zephyr-sdk-0.10.3
             - echo wget https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v0.10.3/zephyr-sdk-0.10.3-setup.run
             - echo chmod +x zephyr-sdk-0.10.3-setup.run
