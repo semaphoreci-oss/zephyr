@@ -10,7 +10,7 @@ blocks:
     task:
       jobs:
         - name: Build
-          parallelism: 20
+          parallelism: 3
           commands:
             - sem-version python 3.7
             - sem-version c 8
