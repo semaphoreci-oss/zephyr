@@ -13,7 +13,7 @@ blocks:
           commands:
             - checkout
             - bash .semaphore/setup.sh
-            - docker pull zephyrprojectrtos/ci:v0.9.1
+            - docker pull zephyrprojectrtos/ci:v0.10.1
             - >-
               docker run
               -e MATRIX_BUILDS=${SEMAPHORE_JOB_COUNT}
@@ -28,4 +28,4 @@ blocks:
               --privileged=true
               --tty
               --net=bridge
-              --entrypoint /home/buildslave/${SEMAPHORE_PROJECT_NAME}/.semaphore/docker_run.sh zephyrprojectrtos/ci:v0.9.1
+              --entrypoint /home/buildslave/${SEMAPHORE_PROJECT_NAME}/.semaphore/docker_run.sh zephyrprojectrtos/ci:v0.10.1
