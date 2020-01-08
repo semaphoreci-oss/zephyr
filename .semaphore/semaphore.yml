@@ -35,3 +35,4 @@ blocks:
             - checkout
             - ls
             - pwd
+            - source .semaphore/docker_run.sh
