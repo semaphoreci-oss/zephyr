@@ -24,6 +24,7 @@ blocks:
               ccache dfu-util device-tree-compiler wget python3-pip python3-setuptools
               python3-wheel xz-utils file make gcc gcc-multilib
             - pip3 install --user -U west
+            - export PATH=~/.local/bin:"$PATH"
             - pip3 install -r https://raw.githubusercontent.com/zephyrproject-rtos/zephyr/master/scripts/requirements.txt --user
             - ls /opt/sdk/zephyr-sdk-0.10.3
             - echo wget https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v0.10.3/zephyr-sdk-0.10.3-setup.run
