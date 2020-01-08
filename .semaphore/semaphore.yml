@@ -33,6 +33,7 @@ blocks:
             - echo cache store zephyr-sdk-0.10.3 /opt/sdk/zephyr-sdk-0.10.3
             - cache list
             - checkout
+            - west init -l .
             - ls
             - pwd
             - source .semaphore/docker_run.sh
