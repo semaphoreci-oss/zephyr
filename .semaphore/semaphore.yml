@@ -5,17 +5,22 @@ agent:
     type: e1-standard-8
     os_image: ubuntu1804
 
-  containers:
-    - name: zephyr
-      image: zephyrprojectrtos/ci:v0.10.1
-
 blocks:
   - name: CI
     task:
       jobs:
         - name: Build
-          parallelism: 10
+          parallelism: 2
           commands:
             - df -h
-            - checkout
-            - ls /opt
+            - wget -O - https://apt.kitware.com/keys/kitware-archive-latest.asc 2>/dev/null | sudo apt-key add -
+            - sudo apt-add-repository 'deb https://apt.kitware.com/ubuntu/ bionic main'
+            - sudo apt install -y --no-install-recommends git cmake ninja-build gperf
+              ccache dfu-util device-tree-compiler wget python3-pip python3-setuptools
+              python3-wheel xz-utils file make gcc gcc-multilib cmake
+            - pip3 install --user -U west
+            - wget https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v0.10.3/zephyr-sdk-0.10.3-setup.run
+            - chmod +x zephyr-sdk-0.10.3-setup.run
+            - sudo ./zephyr-sdk-0.10.3-setup.run --quiet -- -d /opt/sdk/zephyr-sdk-0.10.3
+            - cache list
+            - cache store zephyr-sdk-0.10.3 /opt/sdk/zephyr-sdk-0.10.3
