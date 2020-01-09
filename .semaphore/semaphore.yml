@@ -29,9 +29,10 @@ blocks:
             - sudo chown $USER /opt/sdk
             - df -h
             - cache list
-            - cache restore zephyr-sdk-0.10.3
-            - cache restore zephyr-module
-            - cache restore zephyr-tools
+            - cache restore zephyr-sdk-0.10.3 &
+            - cache restore zephyr-module &
+            - cache restore zephyr-tools &
+            - wait
             - cache --help
             - wget -O - https://apt.kitware.com/keys/kitware-archive-latest.asc 2>/dev/null | sudo apt-key add -
             - sudo apt-add-repository 'deb https://apt.kitware.com/ubuntu/ bionic main'
