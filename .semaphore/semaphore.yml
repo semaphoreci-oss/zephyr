@@ -12,6 +12,8 @@ blocks:
         - name: Build
           parallelism: 3
           commands:
+            - date
+            - echo "============= START ============"
             - sem-version python 3.7
             - sem-version c 8
 
@@ -46,4 +48,8 @@ blocks:
             - checkout --use-cache
             - ls
             - pwd
+            - echo "============= START-BUILD ============"
+            - date
             - source .semaphore/docker_run.sh
+            - echo "============= END-BUILD ============"
+            - date
