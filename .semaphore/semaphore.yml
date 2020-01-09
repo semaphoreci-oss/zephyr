@@ -10,7 +10,7 @@ blocks:
     task:
       jobs:
         - name: Build
-          parallelism: 20
+          parallelism: 80
           commands:
             - cache restore zephyr-sdk-0.10.3 &
             - date
