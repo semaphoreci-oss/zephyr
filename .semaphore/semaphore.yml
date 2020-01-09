@@ -21,22 +21,22 @@ blocks:
             - export PATH=$HOME/.local/bin:$PATH
             - mkdir .pip_cache
             - wget https://raw.githubusercontent.com/zephyrproject-rtos/zephyr/master/scripts/requirements.txt
-            - cache restore
-            - pip3 install --cache-dir .pip_cache -U west
-            - pip3 install --cache-dir .pip_cache -r requirements.txt
-            - cache store
+            - time cache restore
+            - time pip3 install --cache-dir .pip_cache -U west
+            - time pip3 install --cache-dir .pip_cache -r requirements.txt
+            - time cache store
 
             - sudo mkdir /opt/sdk
             - sudo chown $USER /opt/sdk
-            - cache restore zephyr-sdk-0.10.3 &
-            - cache restore zephyr-module &
-            - cache restore zephyr-tools &
-            - checkout --use-cache &
+            - time cache restore zephyr-sdk-0.10.3 &
+            - time cache restore zephyr-module &
+            - time cache restore zephyr-tools &
+            - time checkout --use-cache &
               # remove man-db since we don't need it and takes time to build the db
             - sudo apt-get remove -y --purge man-db
             - wget -O - https://apt.kitware.com/keys/kitware-archive-latest.asc 2>/dev/null | sudo apt-key add -
-            - sudo apt-add-repository 'deb https://apt.kitware.com/ubuntu/ bionic main'
-            - install-package git cmake ninja-build gperf
+            - time sudo apt-add-repository 'deb https://apt.kitware.com/ubuntu/ bionic main'
+            - time install-package git cmake ninja-build gperf
               ccache dfu-util device-tree-compiler wget python3-pip python3-setuptools
               python3-wheel xz-utils file make gcc gcc-multilib
             - echo wget https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v0.10.3/zephyr-sdk-0.10.3-setup.run
