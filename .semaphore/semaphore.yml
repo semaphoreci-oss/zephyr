@@ -43,9 +43,9 @@ blocks:
             - echo chmod +x zephyr-sdk-0.10.3-setup.run
             - echo ./zephyr-sdk-0.10.3-setup.run --quiet -- -d /opt/sdk/zephyr-sdk-0.10.3
             - echo cache store zephyr-sdk-0.10.3 /opt/sdk/zephyr-sdk-0.10.3
+            - wait
             - echo "============= START-BUILD ============"
             - date
-            - wait
             - cd ${HOME}/${SEMAPHORE_PROJECT_NAME}
             - source .semaphore/docker_run.sh
             - echo "============= END-BUILD ============"
