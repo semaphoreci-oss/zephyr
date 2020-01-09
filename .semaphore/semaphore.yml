@@ -10,8 +10,9 @@ blocks:
     task:
       jobs:
         - name: Build
-          parallelism: 100
+          parallelism: 20
           commands:
+            - cache restore zephyr-sdk-0.10.3 &
             - date
             - echo "============= START ============"
             - cache list
@@ -28,7 +29,6 @@ blocks:
 
             - sudo mkdir /opt/sdk
             - sudo chown $USER /opt/sdk
-            - time cache restore zephyr-sdk-0.10.3 &
             - time cache restore zephyr-module &
             - time cache restore zephyr-tools &
             - time checkout --use-cache &
