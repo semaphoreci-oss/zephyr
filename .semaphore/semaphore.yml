@@ -15,7 +15,7 @@ blocks:
             - date
             - echo "============= START ============"
             - sem-version python 3.7
-            - sem-version c 8
+            - sem-version c 7
 
             - export PATH=$HOME/.local/bin:$PATH
             - mkdir .pip_cache
@@ -34,6 +34,7 @@ blocks:
             - cache restore zephyr-tools &
             - wait
             - cache --help
+            - sudo apt-get remove -y --purge man-db
             - wget -O - https://apt.kitware.com/keys/kitware-archive-latest.asc 2>/dev/null | sudo apt-key add -
             - sudo apt-add-repository 'deb https://apt.kitware.com/ubuntu/ bionic main'
             - install-package git cmake ninja-build gperf
