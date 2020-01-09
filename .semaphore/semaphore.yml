@@ -10,7 +10,7 @@ blocks:
     task:
       jobs:
         - name: Build
-          parallelism: 3
+          parallelism: 100
           commands:
             - date
             - echo "============= START ============"
